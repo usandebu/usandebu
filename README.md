@@ -8,7 +8,7 @@ Data Engineering · Lakehouse · Spark / PySpark · Streaming · Databricks · D
 
 **[Energy Data Platform](https://github.com/usandebu/energy-data-platform)**: end-to-end lakehouse crossing Spanish electricity generation (REE) with daily weather (AEMET). Airflow orchestration, raw data in AWS S3 provisioned with Terraform, Bronze/Silver in Databricks + PySpark, Gold modelled and tested with dbt, per-run operational reports and a Databricks SQL dashboard. pytest, Ruff and GitHub Actions in CI.
 
-**Public Procurement Intelligence** _(in progress)_: full-Databricks project over Spanish public tenders (PLACSP). Incremental ingestion of the official Atom feed into a Bronze/Silver/Gold lakehouse, tender documents parsed with `ai_parse_document`, indexed in Vector Search and served through a RAG app with citations (tender id + page), plus a Genie Space and dashboard over the Gold layer. The RAG is evaluated against a question set, not just demoed. Delivered with Asset Bundles and CI.
+**[Public Procurement Intelligence](https://github.com/usandebu/public-procurement-intelligence)**: Databricks lakehouse over Spanish public tenders (PLACSP). Daily incremental ingestion of the official Atom feed into Bronze/Silver/Gold (versions, tombstones, data quality rules), a dashboard and Genie space over Gold, and a RAG assistant over the tender documents (PCAP/PPT): page-aware chunking, Vector Search with hybrid search, answers with tender-and-page citations and an explicit refusal when the documents don't contain the answer. Retrieval evaluated on 100 generated questions (hit@5 0.86 with tender-scoped hybrid search). Deployed as an Asset Bundle with a scheduled 8-task job, failure alerts and CI.
 
 **[Realtime Transit Lakehouse](https://github.com/usandebu/realtime-transit-lakehouse)** _(in progress)_: streaming pipeline for live vehicle positions from Transport for London (JSON) and Berlin VBB (GTFS-Realtime / protobuf), normalized into a canonical schema, published to Kafka and processed with Spark Structured Streaming (watermarking, deduplication) into Delta Lake. Grafana for operations, Power BI for business. Phase 1 (TfL → Kafka → consumer) complete, with tests and CI.
 
@@ -20,7 +20,7 @@ Data Engineering · Lakehouse · Spark / PySpark · Streaming · Databricks · D
 
 > **Python:** PySpark · Pandas · NumPy · Scikit-Learn
 >
-> **Databricks:** Delta Lake · Unity Catalog · Lakeflow Jobs · Auto Loader · Structured Streaming · Asset Bundles · Vector Search · Databricks SQL · Genie
+> **Databricks:** Delta Lake · Unity Catalog · Lakeflow Jobs · Auto Loader · Structured Streaming · Asset Bundles · Vector Search · Databricks SQL AI/BI · Genie · Databricks Apps
 >
 > **Snowflake:** Warehouses · Snowpipe · Streams & Tasks
 >
